@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Text;
+﻿using System.Text;
 using System.Xml;
-using System.Xml.Linq;
 
 namespace XmlTerParser
 {
@@ -19,9 +15,9 @@ namespace XmlTerParser
             {
                 foreach (XmlNode child in node.ChildNodes)
                 {
-                    string prom = child.SelectSingleNode("THIRD_NAME") != null ? child.SelectSingleNode("THIRD_NAME").InnerText.Trim() : "";
-                    string secname = child.SelectSingleNode("SECOND_NAME") != null ? child.SelectSingleNode("SECOND_NAME").InnerText.Trim() : "";
-                    string firstname = child.SelectSingleNode("FIRST_NAME") != null ? child.SelectSingleNode("FIRST_NAME").InnerText.Trim() : "";
+                    string prom = child.SelectSingleNode("THIRD_NAME") != null ? child.SelectSingleNode("THIRD_NAME").InnerText.Trim().Replace("'",string.Empty) : "";
+                    string secname = child.SelectSingleNode("SECOND_NAME") != null ? child.SelectSingleNode("SECOND_NAME").InnerText.Trim().Replace("'", string.Empty) : "";
+                    string firstname = child.SelectSingleNode("FIRST_NAME") != null ? child.SelectSingleNode("FIRST_NAME").InnerText.Trim().Replace("'", string.Empty) : "";
                     stringBuilder.Append(builder.Build($"{firstname} {secname} {prom}"));
                 }
             }

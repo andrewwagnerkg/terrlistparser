@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using System.Xml;
 
 namespace XmlTerParser
@@ -16,8 +15,8 @@ namespace XmlTerParser
             {
                 foreach(XmlNode child in node.ChildNodes)
                 {
-                    string prom = child.SelectSingleNode("Patronomic")!=null ? child.SelectSingleNode("Patronomic").InnerText.Trim() : "";
-                    stringBuilder.Append(builder.Build($"{child.SelectSingleNode("Name").InnerText.Trim()} {child.SelectSingleNode("Surname").InnerText.Trim()} {prom}"));
+                    string prom = child.SelectSingleNode("Patronomic")!=null ? child.SelectSingleNode("Patronomic").InnerText.Trim().Replace("'", string.Empty) : "";
+                    stringBuilder.Append(builder.Build($"{child.SelectSingleNode("Name").InnerText.Trim().Replace("'", string.Empty)} {child.SelectSingleNode("Surname").InnerText.Trim().Replace("'", string.Empty)} {prom}"));
                 }
             }
             return stringBuilder.ToString();

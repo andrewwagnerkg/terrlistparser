@@ -33,8 +33,8 @@ namespace XmlTerParser
 
             try
             {
-                IApplySql applygeneric = new ApplySqlToFile("genericsql.sql");
-                IApplySql applyterminalv3 = new ApplySqlToFile("terminalv3sql.sql");
+                IApplySql applygeneric = new ApplySqlToServer(new GenericConnectionConfigBuilder().Build()); //new ApplySqlToFile("genericsql.sql"); //
+                IApplySql applyterminalv3 = new ApplySqlToServer(new TerminalConnectionConfigBuielder().Build()); //new ApplySqlToFile("terminalv3sql.sql");
 
                 IParser parser = new ConsolidatedKgXMLParser();
                 IParser worldparser = new ConsolidatedWorldXMLParser();
